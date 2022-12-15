@@ -4,13 +4,17 @@ import org.junit.runner.RunWith;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
+
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features= "C:/Users/Bhagyashree/IdeaProjects/BDD/src/test/resources/features/EcommerceLogin.feature",
         glue= "stepdefinition",
         dryRun = false,    //when true = will check whether the steps of feature file is implemented in step definition or not
         monochrome = true, //makes the console output readable
-        plugin = {"pretty", "html:target/cucumber-reports/reports_html.html"}
+        //plugin = {"pretty", "html:target/cucumber-reports/reports_html.html"} //will create report in html format
+       // plugin = {"pretty", "json:target/cucumber-reports/reports_json.json"} //will create report in json format
+        plugin = {"pretty", "junit:target/cucumber-reports/reports_xml.xml"} //will create report in html format
+
 )
 
 public class Run {
