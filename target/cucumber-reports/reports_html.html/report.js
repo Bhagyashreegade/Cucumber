@@ -1,11 +1,11 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("file:src/test/resources/features/EcommerceLogin.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("file:src/test/resources/features/Customer.feature");
 formatter.feature({
-  "name": "Login",
+  "name": "Customers",
   "description": "",
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "Successful Login with Valid Credentials",
+  "name": "Add New Customer",
   "description": "",
   "keyword": "Scenario"
 });
@@ -14,7 +14,7 @@ formatter.step({
   "keyword": "Given "
 });
 formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.userLaunchChromeBrowser()"
+  "location": "stepdefinition.CustomerStepDef.userLaunchChromeBrowser()"
 });
 formatter.result({
   "status": "passed"
@@ -24,7 +24,7 @@ formatter.step({
   "keyword": "When "
 });
 formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.userOpensURL(java.lang.String)"
+  "location": "stepdefinition.CustomerStepDef.userOpensURL(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
@@ -34,7 +34,7 @@ formatter.step({
   "keyword": "And "
 });
 formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.userEntersEmailAsAndPasswordAs(java.lang.String,java.lang.String)"
+  "location": "stepdefinition.CustomerStepDef.userEntersEmailAsAndPasswordAs(java.lang.String,java.lang.String)"
 });
 formatter.result({
   "status": "passed"
@@ -44,37 +44,87 @@ formatter.step({
   "keyword": "And "
 });
 formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.clickOnLogin()"
+  "location": "stepdefinition.CustomerStepDef.clickOnLogin()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "Page Title should be \"Dashboard / nopCommerce administration\"",
+  "name": "User can view Dashboard",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.pageTitleShouldBe(java.lang.String)"
+  "location": "stepdefinition.CustomerStepDef.user_can_view_Dashboard()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "User click on Log out link",
+  "name": "User click on customers Menu",
   "keyword": "When "
 });
 formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.userClickOnLogOutLink()"
+  "location": "stepdefinition.CustomerStepDef.user_click_on_customers_Menu()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "Page Title should be \"Your store. Login\"",
+  "name": "click on customers Menu Item",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "stepdefinition.CustomerStepDef.click_on_customers_Menu_Item()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "click on Add new button",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "stepdefinition.CustomerStepDef.click_on_Add_new_button()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "User can view Add new customer page",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.pageTitleShouldBe(java.lang.String)"
+  "location": "stepdefinition.CustomerStepDef.user_can_view_Add_new_customer_page()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "User enter customer info",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "stepdefinition.CustomerStepDef.user_enter_customer_info()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "click on Save button",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "stepdefinition.CustomerStepDef.click_on_Save_button()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "User can view confirmation message \"The new customer has been added successfully.\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "stepdefinition.CustomerStepDef.user_can_view_confirmation_message(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
@@ -84,242 +134,9 @@ formatter.step({
   "keyword": "And "
 });
 formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.closeBrowser()"
+  "location": "stepdefinition.CustomerStepDef.closeBrowser()"
 });
 formatter.result({
   "status": "passed"
-});
-formatter.scenarioOutline({
-  "name": "Successful Login with Valid Credentials DataDrivenTesting",
-  "description": "",
-  "keyword": "Scenario Outline"
-});
-formatter.step({
-  "name": "User Launch Chrome browser",
-  "keyword": "Given "
-});
-formatter.step({
-  "name": "User opens URL \"http://admin-demo.nopcommerce.com/login\"",
-  "keyword": "When "
-});
-formatter.step({
-  "name": "User enters Email as \"\u003cemail\u003e\" and Password as \"\u003cpassword\u003e\"",
-  "keyword": "And "
-});
-formatter.step({
-  "name": "Click on Login",
-  "keyword": "And "
-});
-formatter.step({
-  "name": "Page Title should be \"Dashboard / nopCommerce administration\"",
-  "keyword": "Then "
-});
-formatter.step({
-  "name": "User click on Log out link",
-  "keyword": "When "
-});
-formatter.step({
-  "name": "Page Title should be \"Your store. Login\"",
-  "keyword": "Then "
-});
-formatter.step({
-  "name": "close browser",
-  "keyword": "And "
-});
-formatter.examples({
-  "name": "",
-  "description": "",
-  "keyword": "Examples",
-  "rows": [
-    {
-      "cells": [
-        "email",
-        "password"
-      ]
-    },
-    {
-      "cells": [
-        "admin@yourstore.com",
-        "admin"
-      ]
-    },
-    {
-      "cells": [
-        "test@yourstore.com",
-        "admin"
-      ]
-    }
-  ]
-});
-formatter.scenario({
-  "name": "Successful Login with Valid Credentials DataDrivenTesting",
-  "description": "",
-  "keyword": "Scenario Outline"
-});
-formatter.step({
-  "name": "User Launch Chrome browser",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.userLaunchChromeBrowser()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "User opens URL \"http://admin-demo.nopcommerce.com/login\"",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.userOpensURL(java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "User enters Email as \"admin@yourstore.com\" and Password as \"admin\"",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.userEntersEmailAsAndPasswordAs(java.lang.String,java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "Click on Login",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.clickOnLogin()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "Page Title should be \"Dashboard / nopCommerce administration\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.pageTitleShouldBe(java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "User click on Log out link",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.userClickOnLogOutLink()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "Page Title should be \"Your store. Login\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.pageTitleShouldBe(java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "close browser",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.closeBrowser()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "Successful Login with Valid Credentials DataDrivenTesting",
-  "description": "",
-  "keyword": "Scenario Outline"
-});
-formatter.step({
-  "name": "User Launch Chrome browser",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.userLaunchChromeBrowser()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "User opens URL \"http://admin-demo.nopcommerce.com/login\"",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.userOpensURL(java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "User enters Email as \"test@yourstore.com\" and Password as \"admin\"",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.userEntersEmailAsAndPasswordAs(java.lang.String,java.lang.String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "Click on Login",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.clickOnLogin()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "Page Title should be \"Dashboard / nopCommerce administration\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.pageTitleShouldBe(java.lang.String)"
-});
-formatter.result({
-  "error_message": "java.lang.AssertionError\r\n\tat org.junit.Assert.fail(Assert.java:87)\r\n\tat org.junit.Assert.assertTrue(Assert.java:42)\r\n\tat org.junit.Assert.assertTrue(Assert.java:53)\r\n\tat stepdefinition.EcommerceLoginStepdef.pageTitleShouldBe(EcommerceLoginStepdef.java:49)\r\n\tat ✽.Page Title should be \"Dashboard / nopCommerce administration\"(file:///C:/Users/Bhagyashree/IdeaProjects/BDD/src/test/resources/features/EcommerceLogin.feature:20)\r\n",
-  "status": "failed"
-});
-formatter.step({
-  "name": "User click on Log out link",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.userClickOnLogOutLink()"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.step({
-  "name": "Page Title should be \"Your store. Login\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.pageTitleShouldBe(java.lang.String)"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.step({
-  "name": "close browser",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "stepdefinition.EcommerceLoginStepdef.closeBrowser()"
-});
-formatter.result({
-  "status": "skipped"
 });
 });
