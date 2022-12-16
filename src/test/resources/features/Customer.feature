@@ -1,12 +1,15 @@
 Feature: Customers
 
-
-  Scenario: Add New Customer
+  Background: Steps common for all scenarios
     Given User Launch Chrome browser
     When User opens URL "http://admin-demo.nopcommerce.com/login"
     And User enters Email as "admin@yourstore.com" and Password as "admin"
     And Click on Login
     Then User can view Dashboard
+
+
+  Scenario: Add New Customer
+
     When User click on customers Menu
     And click on customers Menu Item
     And click on Add new button
@@ -15,5 +18,15 @@ Feature: Customers
     And click on Save button
     Then User can view confirmation message "The new customer has been added successfully."
     And close browser
+
+  Scenario: Search Customer by Email
+
+    When User click on customers Menu
+    And click on customers Menu Item
+    And Enter customer EMail
+    And Click on search button
+    Then User should found Email in the Search table
+    And close browser
+
 
 

@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
         features= "C:/Users/Bhagyashree/IdeaProjects/BDD/src/test/resources/features/Customer.feature",
         glue= "stepdefinition",
-        dryRun = false,    //when true = will check whether the steps of feature file is implemented in step definition or not
+        dryRun = false ,    //when true = will check whether the steps of feature file is implemented in step definition or not
         monochrome = true, //makes the console output readable
         //plugin = {"pretty", "html:target/cucumber-reports/reports_html.html"} //will create report in html format
        // plugin = {"pretty", "json:target/cucumber-reports/reports_json.json"} //will create report in json format

@@ -11,11 +11,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pageobject.CustomerPageObject;
 import pageobject.EcommerceLogin1;
+import pageobject.SearchCustomerPageObject;
 
 public class CustomerStepDef {
     public WebDriver driver;
     public EcommerceLogin1 loginPg;
     public CustomerPageObject cstPg;
+    public SearchCustomerPageObject searchCustomerPage;
 
 
     @Given("User Launch Chrome browser")
@@ -24,6 +26,7 @@ public class CustomerStepDef {
         driver = new ChromeDriver();
         loginPg = new EcommerceLogin1(driver);
         cstPg = new CustomerPageObject(driver);
+        searchCustomerPage = new SearchCustomerPageObject(driver);
     }
 
     @When("User opens URL {string}")
@@ -108,7 +111,7 @@ public class CustomerStepDef {
 
     @When("User enter customer info")
     public void user_enter_customer_info() {
-        cstPg.enterEmail("test4@gmail.com");
+        cstPg.enterEmail("test128@gmail.com");
         cstPg.enterPassword("test1");
         cstPg.enterFirstName("Bhagyashree");
         cstPg.enterLastName("Gade");
@@ -141,9 +144,31 @@ public class CustomerStepDef {
         }
     }
 
-    @And("close browser")
-    public void closeBrowser() {
-        driver.close();
-        driver.quit();
+    //Search customer methods
+
+    @When("Enter customer EMail")
+    public void enter_customer_EMail() {
+        searchCustomerPage.enterEmailAddress("test128@gmail.com");
     }
-}
+
+    @Then("Click on search button")
+    public void click_on_search_button() {
+        searchCustomerPage.clickOnSearchBtn();
+
+    }
+
+    @Then("User should found Email in the Search table")
+    public void user_should_found_Email_in_the_Search_table() {
+        String expectedEmail = "test128@gmail.com";
+
+        Assert.assertTrue(searchCustomerPage.searchCustomerByEmail(expectedEmail));
+
+    }
+
+        @And("close browser")
+        public void closeBrowser () {
+            driver.close();
+            driver.quit();
+        }
+    }
+
