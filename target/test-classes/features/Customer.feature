@@ -1,12 +1,15 @@
 Feature: Customers
 
-
-  Scenario: Add New Customer
+  Background: Steps common for all scenarios
     Given User Launch Chrome browser
     When User opens URL "http://admin-demo.nopcommerce.com/login"
     And User enters Email as "admin@yourstore.com" and Password as "admin"
     And Click on Login
     Then User can view Dashboard
+
+  @Regression
+  Scenario: Add New Customer
+
     When User click on customers Menu
     And click on customers Menu Item
     And click on Add new button
@@ -16,12 +19,9 @@ Feature: Customers
     Then User can view confirmation message "The new customer has been added successfully."
     And close browser
 
+  @Sanity
   Scenario: Search Customer by Email
-    Given User Launch Chrome browser
-    When User opens URL "http://admin-demo.nopcommerce.com/login"
-    And User enters Email as "admin@yourstore.com" and Password as "admin"
-    And Click on Login
-    Then User can view Dashboard
+
     When User click on customers Menu
     And click on customers Menu Item
     And Enter customer EMail

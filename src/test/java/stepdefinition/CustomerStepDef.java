@@ -1,29 +1,49 @@
 package stepdefinition;
 
+import io.cucumber.java.*;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pageobject.CustomerPageObject;
 import pageobject.EcommerceLogin1;
 import pageobject.SearchCustomerPageObject;
 
-public class CustomerStepDef {
-    public WebDriver driver;
-    public EcommerceLogin1 loginPg;
-    public CustomerPageObject cstPg;
-    public SearchCustomerPageObject searchCustomerPage;
+import java.io.File;
+import java.io.IOException;
+
+public class CustomerStepDef extends BaseClass {  //Concept of Inheritance
+
+    @Before (order=1)
+    public void setup() {
+        System.out.println("Setup Method executed");
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+    }
+
+    /*@Before(order=0)
+    public void setup2() {
+        System.out.println("Setup2 Method executed");
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+    }
+
+    @BeforeStep
+    public void beforeStep() {
+        System.out.println("This is before steps....");
+    }*/
 
 
     @Given("User Launch Chrome browser")
     public void userLaunchChromeBrowser() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+
         loginPg = new EcommerceLogin1(driver);
         cstPg = new CustomerPageObject(driver);
         searchCustomerPage = new SearchCustomerPageObject(driver);
@@ -111,7 +131,8 @@ public class CustomerStepDef {
 
     @When("User enter customer info")
     public void user_enter_customer_info() {
-        cstPg.enterEmail("test128@gmail.com");
+        //cstPg.enterEmail("test128@gmail.com");
+        cstPg.enterEmail(genearateEmailId() + "@gmail.com"); //will generate new email id every time the scenario is executed.
         cstPg.enterPassword("test1");
         cstPg.enterFirstName("Bhagyashree");
         cstPg.enterLastName("Gade");
@@ -148,7 +169,7 @@ public class CustomerStepDef {
 
     @When("Enter customer EMail")
     public void enter_customer_EMail() {
-        searchCustomerPage.enterEmailAddress("test128@gmail.com");
+        searchCustomerPage.enterEmailAddress("victoria_victoria@nopCommerce.com");
     }
 
     @Then("Click on search button")
@@ -159,16 +180,57 @@ public class CustomerStepDef {
 
     @Then("User should found Email in the Search table")
     public void user_should_found_Email_in_the_Search_table() {
-        String expectedEmail = "test128@gmail.com";
+        String expectedEmail = "victoria_victoria@nopCommerce.com";
 
         Assert.assertTrue(searchCustomerPage.searchCustomerByEmail(expectedEmail));
 
     }
 
-        @And("close browser")
-        public void closeBrowser () {
-            driver.close();
-            driver.quit();
+   /* @AfterStep
+    public void afterStep() {
+        System.out.println("This is after steps....");
+    }*/
+
+    @After
+    public void teardown(Scenario sc) {
+        System.out.println("Tear Down method executed");
+        if(sc.isFailed()== true){
+
+
+            String fileWithPath = "C:\\Users\\Bhagyashree\\IdeaProjects\\BDD\\Screenshot\\failedScreenshot.png";
+            TakesScreenshot scrShot =((TakesScreenshot)driver);
+
+            //Call getScreenshotAs method to create image file
+            File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+
+            //Move image file to new destination
+            File DestFile=new File(fileWithPath);
+
+            //Copy file at destination
+
+            try {
+                FileUtils.copyFile(SrcFile, DestFile);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
+
+        driver.quit();
     }
+
+
+   /* @After (order=2)
+    public void teardown2() {
+        System.out.println("Tear Down 2 method executed");
+        driver.quit();
+    }*/
+
+
+    @And("close browser")
+    public void closeBrowser() {
+        driver.close();
+        //driver.quit();
+    }
+}
 
