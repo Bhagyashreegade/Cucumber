@@ -1,12 +1,15 @@
 package stepdefinition;
 
-import io.cucumber.java.*;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
@@ -19,13 +22,16 @@ import pageobject.SearchCustomerPageObject;
 import java.io.File;
 import java.io.IOException;
 
+
 public class CustomerStepDef extends BaseClass {  //Concept of Inheritance
 
-    @Before (order=1)
+    @Before(order = 1)
     public void setup() {
+        log = LogManager.getLogger("CustomerStepDef");
         System.out.println("Setup Method executed");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        log.info("Setup 1 executed .......");
     }
 
     /*@Before(order=0)
@@ -47,22 +53,27 @@ public class CustomerStepDef extends BaseClass {  //Concept of Inheritance
         loginPg = new EcommerceLogin1(driver);
         cstPg = new CustomerPageObject(driver);
         searchCustomerPage = new SearchCustomerPageObject(driver);
+        log.info("User launch chrome browser");
+
     }
 
     @When("User opens URL {string}")
     public void userOpensURL(String url) {
         driver.get(url);
+        log.info("URL opened");
     }
 
     @And("User enters Email as {string} and Password as {string}")
     public void userEntersEmailAsAndPasswordAs(String email, String pass) {
         loginPg.enterEmail(email);
         loginPg.enterPassword(pass);
+        log.info("Email & Password entered");
     }
 
     @And("Click on Login")
     public void clickOnLogin() {
         loginPg.clickOnLoginButton();
+        log.info("Login in button clicked");
     }
 
     //Login Feature
@@ -71,8 +82,10 @@ public class CustomerStepDef extends BaseClass {  //Concept of Inheritance
     public void pageTitleShouldBe(String expectedTitle) {
         String actualTitle = driver.getTitle();
         if (actualTitle.equals(expectedTitle)) {
+            log.warn("Login feature: Page title matched");
             Assert.assertTrue(true);
         } else {
+            log.warn("Login feature: Page Title not matched");
             Assert.assertTrue(false);
         }
     }
@@ -82,10 +95,7 @@ public class CustomerStepDef extends BaseClass {  //Concept of Inheritance
         loginPg.clickOnLogOutButton();
     }
 
-
     //Add New Customer
-
-
     @Then("User can view Dashboard")
     public void user_can_view_Dashboard() {
         String actTitle = cstPg.getPageTitle();
@@ -97,7 +107,6 @@ public class CustomerStepDef extends BaseClass {  //Concept of Inheritance
             Assert.assertTrue(false);
         }
     }
-
 
     @When("User click on customers Menu")
     public void user_click_on_customers_Menu() {
@@ -113,7 +122,6 @@ public class CustomerStepDef extends BaseClass {  //Concept of Inheritance
     @When("click on Add new button")
     public void click_on_Add_new_button() {
         cstPg.clickOnAddnew();
-
     }
 
     @Then("User can view Add new customer page")
@@ -124,9 +132,7 @@ public class CustomerStepDef extends BaseClass {  //Concept of Inheritance
             Assert.assertTrue(true);
         } else {
             Assert.assertTrue(false);
-
         }
-
     }
 
     @When("User enter customer info")
@@ -194,17 +200,17 @@ public class CustomerStepDef extends BaseClass {  //Concept of Inheritance
     @After
     public void teardown(Scenario sc) {
         System.out.println("Tear Down method executed");
-        if(sc.isFailed()== true){
+        if (sc.isFailed() == true) {
 
 
             String fileWithPath = "C:\\Users\\Bhagyashree\\IdeaProjects\\BDD\\Screenshot\\failedScreenshot.png";
-            TakesScreenshot scrShot =((TakesScreenshot)driver);
+            TakesScreenshot scrShot = ((TakesScreenshot) driver);
 
             //Call getScreenshotAs method to create image file
-            File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+            File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
 
             //Move image file to new destination
-            File DestFile=new File(fileWithPath);
+            File DestFile = new File(fileWithPath);
 
             //Copy file at destination
 
@@ -229,6 +235,7 @@ public class CustomerStepDef extends BaseClass {  //Concept of Inheritance
 
     @And("close browser")
     public void closeBrowser() {
+        log.info("Browser closed");
         driver.close();
         //driver.quit();
     }

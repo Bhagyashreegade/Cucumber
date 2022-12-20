@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
         glue = "stepdefinition",
         dryRun = false,    //when true = will check whether the steps of feature file is implemented in step definition or not
         monochrome = true, //makes the console output readable
-        tags = "@Sanity",  //will run regression
+        tags = "@Regression",  //will run regression
         // tags= "@Regression and @Sanity", //will run only that scenarios which have both tags
         //tags= "@Regression or @Sanity", //will run both of them
         //tags= "@Regression and not @Sanity", //will include Regression but not Sanity

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import pageobject.CustomerPageObject;
 import pageobject.EcommerceLogin1;
 import pageobject.SearchCustomerPageObject;
+import org.apache.logging.log4j.*;
 
 public class BaseClass {
 
@@ -12,6 +13,7 @@ public class BaseClass {
     public EcommerceLogin1 loginPg;
     public CustomerPageObject cstPg;
     public SearchCustomerPageObject searchCustomerPage;
+    public static Logger log;
 
     public String genearateEmailId(){
 
