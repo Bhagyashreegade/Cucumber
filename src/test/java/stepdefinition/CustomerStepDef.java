@@ -15,9 +15,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import pageobject.CustomerPageObject;
 import pageobject.EcommerceLogin1;
 import pageobject.SearchCustomerPageObject;
+import utilities.ReadConfig;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,10 +30,35 @@ public class CustomerStepDef extends BaseClass {  //Concept of Inheritance
 
     @Before(order = 1)
     public void setup() {
+
         log = LogManager.getLogger("CustomerStepDef");
         System.out.println("Setup Method executed");
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+
+        readConfig = new ReadConfig();
+        String browser = readConfig.getBrowser();
+
+        switch (browser) {
+            case "chrome":
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
+                break;
+
+            case "msedge":
+                WebDriverManager.edgedriver().setup();
+                driver = new EdgeDriver();
+                break;
+
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                driver = new
+                        FirefoxDriver();
+                break;
+            default:
+                driver = null;
+                break;
+
+        }
+
         log.info("Setup 1 executed .......");
     }
 
