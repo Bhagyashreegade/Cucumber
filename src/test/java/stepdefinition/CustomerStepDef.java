@@ -68,7 +68,6 @@ public class CustomerStepDef extends BaseClass {  //Concept of Inheritance
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
     }
-
     @BeforeStep
     public void beforeStep() {
         System.out.println("This is before steps....");
@@ -268,4 +267,3 @@ public class CustomerStepDef extends BaseClass {  //Concept of Inheritance
         //driver.quit();
     }
 }
-

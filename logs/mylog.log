@@ -1,1 +1,13 @@
 
+[INFO ] 2022-12-24 12:15:16.325 [main] CustomerStepDef - Setup 1 executed .......
+[INFO ] 2022-12-24 12:15:16.595 [main] CustomerStepDef - User launch chrome browser
+[INFO ] 2022-12-24 12:15:19.075 [main] CustomerStepDef - URL opened
+[INFO ] 2022-12-24 12:15:20.036 [main] CustomerStepDef - Email & Password entered
+[INFO ] 2022-12-24 12:15:25.411 [main] CustomerStepDef - Login in button clicked
+[INFO ] 2022-12-24 12:15:32.366 [main] CustomerStepDef - Browser closed
+[INFO ] 2022-12-24 19:50:36.842 [main] CustomerStepDef - Setup 1 executed .......
+[INFO ] 2022-12-24 19:50:37.003 [main] CustomerStepDef - User launch chrome browser
+[INFO ] 2022-12-24 19:50:40.816 [main] CustomerStepDef - URL opened
+[INFO ] 2022-12-24 19:50:41.823 [main] CustomerStepDef - Email & Password entered
+[INFO ] 2022-12-24 19:50:45.807 [main] CustomerStepDef - Login in button clicked
+[INFO ] 2022-12-24 19:50:53.407 [main] CustomerStepDef - Browser closed
